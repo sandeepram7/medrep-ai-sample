@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedRep AI - Digital Medical Representative</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-pills"></i>
+                <span>MedRep AI</span>
+            </div>
+            <p class="tagline">Digital Medical Representative</p>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active">
+                <i class="fas fa-comments"></i>
+                <span>Drug Query</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Generic Finder</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-rupee-sign"></i>
+                <span>Price Compare</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>CGHS Lookup</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Interactions</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="data-sources">
+                <p class="source-title">Data Sources</p>
+                <div class="source-badges">
+                    <span class="badge">CDSCO</span>
+                    <span class="badge">CGHS</span>
+                    <span class="badge">OpenFDA</span>
+                    <span class="badge">Jan Aushadhi</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Drug Information Assistant</h1>
+                <p>Get instant, accurate drug information with Indian pricing & coverage</p>
+            </div>
+            <div class="header-right">
+                <button class="btn btn-outline" id="voiceBtn">
+                    <i class="fas fa-microphone"></i>
+                    Voice Input
+                </button>
+                <div class="user-avatar">
+                    <i class="fas fa-user-md"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Chat Container -->
+        <div class="chat-container">
+            <!-- Welcome Message -->
+            <div class="welcome-section" id="welcomeSection">
+                <div class="welcome-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h2>Welcome, Doctor!</h2>
+                <p>I'm your AI-powered medical representative. Ask me about:</p>
+                
+                <!-- Specialty Focus Badge -->
+                <div class="specialty-badge">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Specialized in <strong>Cardiovascular</strong> & <strong>Metabolic</strong> drugs with complete interaction data</span>
+                </div>
+                
+                <div class="quick-actions">
+                    <button class="quick-action-btn" onclick="askQuestion('What is the CGHS coverage for Metformin?')">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>CGHS Coverage</span>
+                    </button>
+                    <button class="quick-action-btn" onclick="askQuestion('Show me generic alternatives for Crestor')">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Generic Alternatives</span>
+                    </button>
+                    <button class="quick-action-btn" onclick="askQuestion('What are the drug interactions for Aspirin?')">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Drug Interactions</span>
+                    </button>
+                    <button class="quick-action-btn" onclick="askQuestion('Compare prices for Atorvastatin brands')">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>Price Comparison</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <i class="fas fa-pills input-icon"></i>
+                    <input 
+                        type="text" 
+                        id="userInput" 
+                        placeholder="Ask about any drug - coverage, pricing, interactions, alternatives..."
+                        autocomplete="off"
+                    >
+                    <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <p class="input-hint">
+                    <i class="fas fa-lightbulb"></i>
+                    Try: "Is Metformin covered under CGHS? What are cheaper alternatives?"
+                </p>
+            </div>
+        </div>
+
+        <!-- Disclaimer Banner -->
+        <div class="disclaimer-banner">
+            <div class="disclaimer-content">
+                <i class="fas fa-info-circle"></i>
+                <p><strong>Disclaimer:</strong> For informational purposes only. Does not constitute medical advice. Always verify drug information with official sources and consult qualified healthcare professionals before making clinical decisions. Data sourced from CDSCO, CGHS, Jan Aushadhi & OpenFDA.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Drug Info Modal -->
+    <div class="modal" id="drugModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-pills"></i> <span id="modalDrugName">Drug Name</span></h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Drug details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
