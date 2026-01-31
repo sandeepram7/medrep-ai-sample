@@ -1,1 +1,3 @@
-404: Not Found
+# MedRep AI Sample
+
+Digital Medical Representative Prototype
